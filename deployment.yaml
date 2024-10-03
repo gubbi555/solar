@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-ecr-deployment
+  labels:
+    app: my-ecr-app
+spec:
+  replicas: 3  # Number of pod replicas you want to run
+  selector:
+    matchLabels:
+      app: my-ecr-app
+  template:
+    metadata:
+      labels:
+        app: my-ecr-app
+    spec:
+      containers:
+        - name: my-ecr-container
+          image: 654654360093.dkr.ecr.ap-south-1.amazonaws.com/my-ecr:latest
+          ports:
+            - containerPort: 80
